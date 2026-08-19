@@ -1,9 +1,9 @@
-# Contributing
+# 贡献指南
 
-1. Create a focused branch.
-2. Run `npm ci` and `npm run check`.
-3. Keep tools read-only and deterministic in tests.
-4. Add tests for verifier, retry, or evidence changes.
-5. Confirm that you have the right to submit all code and data.
+1. 创建目标明确的分支；
+2. 运行 `npm ci` 和 `npm run check`；
+3. 工具保持只读，测试保持确定性；
+4. 修改审查、重试或证据逻辑时同步补充测试；
+5. 确认你有权公开提交全部代码和数据。
 
-Do not contribute employer/customer code, confidential prompts, private trajectories, credentials, cookies, personal data, or copied proprietary datasets.
+禁止提交雇主或客户代码、保密提示词、私有轨迹、凭据、Cookie、个人数据或复制的专有数据集。

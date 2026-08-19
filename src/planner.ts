@@ -5,7 +5,7 @@ export class DeterministicPlanner implements ResearchPlanner {
     const discovered = new Set(discoveredProjects);
     return {
       revision: 1,
-      rationale: "仅为搜索实际发现的项目创建只读证据采集步骤",
+      rationale: "仅为工具确认可执行的显式目标创建只读证据采集步骤",
       steps: task.requiredProjects.filter((project) => discovered.has(project)).map((project) => ({
         project,
         status: "PENDING",
