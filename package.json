@@ -1,9 +1,12 @@
 {
   "name": "open-source-research-agent",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "description": "Evidence-grounded research agent for comparing open-source projects.",
+  "repository": "github:wkaixuan677-arch/open-source-research-agent",
+  "homepage": "https://github.com/wkaixuan677-arch/open-source-research-agent#readme",
+  "bugs": "https://github.com/wkaixuan677-arch/open-source-research-agent/issues",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node --import tsx --test test/*.test.ts",
@@ -15,6 +18,6 @@
     "tsx": "^4.20.0",
     "typescript": "^5.9.0"
   },
-  "engines": { "node": ">=20" },
+  "engines": { "node": ">=22" },
   "license": "MIT"
 }
