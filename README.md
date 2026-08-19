@@ -4,6 +4,10 @@
 
 > 本仓库是独立 clean-room 作品，不包含任何公司代码、内部数据、私有提示词或生产凭据。
 
+![Open Source Research Agent 演示](docs/demo.gif)
+
+查看：[完整架构说明](docs/ARCHITECTURE.md) · [中文面试讲解材料](docs/INTERVIEW_GUIDE.md)
+
 ## 为什么做这个项目
 
 普通搜索脚本只负责“找到内容”，但 Agent 还需要回答三个问题：目标是否真的完成、结论是否有证据、工具失败后是否能安全恢复。本项目用可测试的状态和接口演示这些能力。
