@@ -53,13 +53,30 @@ export interface ReviewSummary {
 }
 
 export interface ResearchToolset {
-  searchProjects(names: string[]): string[] | Promise<string[]>;
-  inspectProject(name: string): ProjectRecord | Promise<ProjectRecord>;
+  searchProjects(names: string[], signal?: AbortSignal): string[] | Promise<string[]>;
+  inspectProject(name: string, signal?: AbortSignal): ProjectRecord | Promise<ProjectRecord>;
+}
+
+export interface ResearchRunOptions {
+  signal?: AbortSignal;
+}
+
+export interface ResearchPlannerContext {
+  signal?: AbortSignal;
 }
 
 export interface ResearchPlanner {
-  createPlan(task: ResearchTask, discoveredProjects: string[]): ResearchPlan | Promise<ResearchPlan>;
-  revisePlan(plan: ResearchPlan, project: string, reason: string): ResearchPlan | Promise<ResearchPlan>;
+  createPlan(
+    task: ResearchTask,
+    discoveredProjects: string[],
+    context?: ResearchPlannerContext,
+  ): ResearchPlan | Promise<ResearchPlan>;
+  revisePlan(
+    plan: ResearchPlan,
+    project: string,
+    reason: string,
+    context?: ResearchPlannerContext,
+  ): ResearchPlan | Promise<ResearchPlan>;
 }
 
 export interface ResearchResult {

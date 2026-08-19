@@ -2,11 +2,22 @@ import type { ProjectRecord, ResearchToolset } from "./types.js";
 
 export class ResearchToolError extends Error {
   constructor(
-    readonly code: "TRANSIENT_FAILURE" | "PROJECT_NOT_FOUND",
+    readonly code:
+      | "TRANSIENT_FAILURE"
+      | "PROJECT_NOT_FOUND"
+      | "RATE_LIMITED"
+      | "TIMEOUT"
+      | "ABORTED"
+      | "INVALID_TARGET"
+      | "RESPONSE_TOO_LARGE"
+      | "INVALID_RESPONSE"
+      | "HTTP_FAILURE",
     readonly retryable: boolean,
     message: string,
+    readonly retryAfterMs?: number,
   ) {
     super(message);
+    this.name = "ResearchToolError";
   }
 }
 

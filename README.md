@@ -31,7 +31,7 @@ PLAN → ACT(tool) → VERIFY(reviewer)
 ```
 
 - **Task Contract**：定义项目、必需字段、工具和重规划预算；
-- **Tool Calling**：搜索候选项目并读取结构化资料；
+- **Tool Calling**：通过可注入工具校验任务中显式指定的目标，并读取结构化资料；默认使用离线 fixture，也可选择 GitHub 公共只读适配器；
 - **Evidence Grounding**：每条结论绑定证据 ID 与来源；
 - **Reviewer**：检查缺失字段和引用 ID 完整性，拒绝“看似完成”；
 - **Bounded Replanning**：瞬时失败后有限重试，预算耗尽则输出 `PARTIAL/BLOCKED`；
@@ -46,7 +46,7 @@ npm ci
 npm run check
 ```
 
-演示完全离线，不需要 API Key，也不会访问真实账号。结果写入 `reports/demo-result.json`，该文件默认不提交。
+默认演示完全离线，不需要 API Key，也不会访问真实账号。结果写入 `reports/demo-result.json`，该文件默认不提交。
 
 预期输出示例：
 
@@ -56,16 +56,35 @@ npm run check
 阶段：PLAN → ACT → PLAN → REPLAN → ACT → ACT → VERIFY → FINALIZE
 ```
 
+### 可选：读取真实 GitHub 公共仓库
+
+```bash
+npm run demo -- --mode=github --projects=octocat/Hello-World,nodejs/node
+```
+
+该模式只读取 GitHub 公共 REST API 的仓库元数据，**不需要 Token**，结果写入 `reports/github-demo-result.json`。项目参数只接受 `owner/repo`、`https://github.com/owner/repo` 或对应的 `https://api.github.com/repos/owner/repo`；其他域名、HTTP、查询参数和非仓库路径会在发起网络请求前被拒绝。
+
+GitHub 适配器的安全边界：
+
+- 请求地址由适配器生成，目标只能是 `api.github.com/repos/{owner}/{repo}`；
+- 只暴露读取接口，请求方法固定为 `GET`，不读取或发送 Token；
+- 使用固定 `User-Agent`、8 秒默认超时、`AbortSignal` 和 256 KiB 默认响应上限；可配置值仍被限制在 60 秒和 2 MiB 以内；
+- 区分 404、限流、超时、调用方取消、服务端故障、非法目标和异常响应；
+- 测试全部使用 mock `fetch`，不会依赖真实网络。
+
 ## 设计边界
 
-- 当前使用本地 fixture，目的是保证演示与测试可重复；
+- 默认使用本地 fixture，目的是保证演示与测试可重复；GitHub 模式是显式选择的可选路径；
 - 当前没有接入真实 LLM；公开版实现了可插拔 `ResearchPlanner`、显式计划版本和策略变化，默认使用确定性 Planner 保证复现；
-- 不处理登录、验证码、私有仓库或凭据；
+- GitHub 适配器只读取公开仓库元数据，不读取 README 或源码，不处理登录、验证码、私有仓库或凭据；
+- GitHub 模式受公共 API 限流和网络状态影响，没有缓存、重试退避或生产级可用性承诺；
 - 演示结果不是线上性能或实际业务收益。
+
+> 这是用于展示 Agent 工具抽象、证据链和安全边界的非生产实现，不应直接作为通用 GitHub 客户端或生产数据采集服务。
 
 ## 后续计划
 
-- 增加只读 GitHub API 适配器和缓存；
+- 为公开元数据增加可验证缓存、退避和来源时效策略；
 - 增加可插拔 Model Adapter，让 Planner 可由结构化模型输出驱动；
 - 增加来源时效、冲突证据和可信度评估；
 - 使用公开、可复现任务集评估报告正确率和引用覆盖率。

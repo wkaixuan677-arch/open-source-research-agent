@@ -1,7 +1,7 @@
 {
   "name": "open-source-research-agent",
-  "version": "0.2.0",
-  "private": false,
+  "version": "0.3.0",
+  "private": true,
   "type": "module",
   "description": "Evidence-grounded research agent for comparing open-source projects.",
   "repository": "github:wkaixuan677-arch/open-source-research-agent",
