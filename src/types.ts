@@ -8,6 +8,19 @@ export interface ResearchTask {
   maxReplans: number;
 }
 
+export interface PlanStep {
+  project: string;
+  status: "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
+  strategy: "inspect" | "retry_after_transient_failure";
+  attempt: number;
+}
+
+export interface ResearchPlan {
+  revision: number;
+  rationale: string;
+  steps: PlanStep[];
+}
+
 export interface ProjectRecord {
   name: string;
   language: string;
@@ -30,6 +43,23 @@ export interface TraceEvent {
   detail: string;
   tool?: string;
   evidenceIds?: string[];
+  planRevision?: number;
+}
+
+export interface ReviewSummary {
+  accepted: boolean;
+  missing: string[];
+  unsupportedCitations: string[];
+}
+
+export interface ResearchToolset {
+  searchProjects(names: string[]): string[] | Promise<string[]>;
+  inspectProject(name: string): ProjectRecord | Promise<ProjectRecord>;
+}
+
+export interface ResearchPlanner {
+  createPlan(task: ResearchTask, discoveredProjects: string[]): ResearchPlan | Promise<ResearchPlan>;
+  revisePlan(plan: ResearchPlan, project: string, reason: string): ResearchPlan | Promise<ResearchPlan>;
 }
 
 export interface ResearchResult {
@@ -39,4 +69,6 @@ export interface ResearchResult {
   trace: TraceEvent[];
   toolCalls: number;
   replans: number;
+  plan: ResearchPlan;
+  review: ReviewSummary;
 }
