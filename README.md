@@ -1,7 +1,7 @@
 # Open Source Research Agent
 
-[![CI](https://github.com/wkaixuan677-arch/open-source-research-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/wkaixuan677-arch/open-source-research-agent/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/wkaixuan677-arch/open-source-research-agent)](https://github.com/wkaixuan677-arch/open-source-research-agent/releases)
+[![CI](https://github.com/coolwkx/open-source-research-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/coolwkx/open-source-research-agent/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/coolwkx/open-source-research-agent)](https://github.com/coolwkx/open-source-research-agent/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 一个面向开源项目调研的轻量 Agent：先制定证据采集计划，再调用工具读取项目资料，对引用和任务覆盖度进行审查，必要时重规划，最后生成带证据编号的报告。
@@ -12,7 +12,11 @@
 
 查看：[完整架构说明](docs/ARCHITECTURE.md) · [中文面试讲解材料](docs/INTERVIEW_GUIDE.md)
 
-作品集导航：[Browser Runtime](https://github.com/wkaixuan677-arch/browser-agent-runtime-lite) · [Agent Eval Lab](https://github.com/wkaixuan677-arch/agent-eval-lab) · **Research Agent**
+作品集导航：[Browser Runtime](https://github.com/coolwkx/browser-agent-runtime-lite) · [Agent Eval Lab](https://github.com/coolwkx/agent-eval-lab) · **Research Agent**
+
+## 在整套 Agent 工程中的位置
+
+本仓库负责“**场景应用**”：把规划、只读工具、证据引用、Reviewer 和有限重规划组合成开源项目调研 Agent。[Browser Runtime](https://github.com/coolwkx/browser-agent-runtime-lite) 展示底层可靠性机制，[Agent Eval Lab](https://github.com/coolwkx/agent-eval-lab) 负责验证输出是否真正完成目标。
 
 ## 为什么做这个项目
 

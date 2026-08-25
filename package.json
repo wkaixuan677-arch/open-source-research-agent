@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Evidence-grounded research agent for comparing open-source projects.",
-  "repository": "github:wkaixuan677-arch/open-source-research-agent",
-  "homepage": "https://github.com/wkaixuan677-arch/open-source-research-agent#readme",
-  "bugs": "https://github.com/wkaixuan677-arch/open-source-research-agent/issues",
+  "repository": "github:coolwkx/open-source-research-agent",
+  "homepage": "https://github.com/coolwkx/open-source-research-agent#readme",
+  "bugs": "https://github.com/coolwkx/open-source-research-agent/issues",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node --import tsx --test test/*.test.ts",

@@ -2,7 +2,7 @@ import { ResearchToolError } from "./tools.js";
 import type { ProjectRecord, ResearchToolset } from "./types.js";
 
 export const GITHUB_READ_ONLY_USER_AGENT =
-  "open-source-research-agent/0.3.0 (read-only; +https://github.com/wkaixuan677-arch/open-source-research-agent)";
+  "open-source-research-agent/0.3.0 (read-only; +https://github.com/coolwkx/open-source-research-agent)";
 
 const DEFAULT_TIMEOUT_MS = 8_000;
 const DEFAULT_MAX_RESPONSE_BYTES = 256 * 1024;

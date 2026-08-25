@@ -27,6 +27,6 @@
 - 增加引用审查、覆盖检查和工具失败后的有界重规划；
 - 提供确定性离线演示、自动测试、架构图、演示 GIF 与面试材料。
 
-[0.1.0]: https://github.com/wkaixuan677-arch/open-source-research-agent/releases/tag/v0.1.0
-[0.2.0]: https://github.com/wkaixuan677-arch/open-source-research-agent/compare/v0.1.0...v0.2.0
-[0.3.0]: https://github.com/wkaixuan677-arch/open-source-research-agent/compare/v0.2.0...v0.3.0
+[0.1.0]: https://github.com/coolwkx/open-source-research-agent/releases/tag/v0.1.0
+[0.2.0]: https://github.com/coolwkx/open-source-research-agent/compare/v0.1.0...v0.2.0
+[0.3.0]: https://github.com/coolwkx/open-source-research-agent/compare/v0.2.0...v0.3.0
