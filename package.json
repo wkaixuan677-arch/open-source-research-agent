@@ -14,8 +14,8 @@
     "check": "npm run build && npm test && npm run demo"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
-    "tsx": "^4.20.0",
+    "@types/node": "^24.19.0",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.0"
   },
   "engines": { "node": ">=22" },
